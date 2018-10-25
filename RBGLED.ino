@@ -6,55 +6,74 @@ int micro = 0;
 //Potentiometer 1
 int Potentiometer1 = 0;
 int val1 = 0;
+int pval1 = 0;
 
 //Potentiometer 2
 int Potentiometer2 = 1;
 int val2 = 0;
+int pval2 = 0;
 
 //Potentiometer 3
 int Potentiometer3 = 2;
 int val3 = 0;
+int pval3 = 0;
 
 void setup() {
-  pinMode (Red, OUTPUT); 
+  pinMode (Red, OUTPUT);
   pinMode (Green, OUTPUT);
   pinMode (Blue, OUTPUT);
   pinMode(Potentiometer1, OUTPUT);
   pinMode(Potentiometer2, OUTPUT);
   pinMode(Potentiometer3, OUTPUT);
+  Serial.begin(9600);
 
   int i;
-  for (i = 0; i < Red; i++)  
-  pinMode(Red, OUTPUT);
+  for (i = 0; i < Red; i++)
+    pinMode(Red, OUTPUT);
 
-  for (i = 0; i < Green; i++)  
-  pinMode(Green, OUTPUT);
+  for (i = 0; i < Green; i++)
+    pinMode(Green, OUTPUT);
 
-  for (i = 0; i < Blue; i++)  
-  pinMode(Blue, OUTPUT);
+  for (i = 0; i < Blue; i++)
+    pinMode(Blue, OUTPUT);
 }
 
 void loop() {
-  val1 = analogRead(Potentiometer1);
-    val2 = analogRead(Potentiometer2);
-      val3 = analogRead(Potentiometer3);
+  pval1 = analogRead(Potentiometer1);
+  pval2 = analogRead(Potentiometer2);
+  pval3 = analogRead(Potentiometer3);
   
+  if (pval1 != val1 || pval2 != val2 || pval3 != val3) {
+    printstuff();
+  }
+
+  val1 = analogRead(Potentiometer1);
+  val2 = analogRead(Potentiometer2);
+  val3 = analogRead(Potentiometer3);
+
   micro = analogRead(Potentiometer1);
   delayMicroseconds(micro);
-  digitalWrite (Red,HIGH);
+  digitalWrite (Red, HIGH);
   delayMicroseconds(micro);
-  digitalWrite(Red,LOW);
+  digitalWrite(Red, LOW);
 
   micro = analogRead(Potentiometer2);
   delayMicroseconds(micro);
-  digitalWrite (Green,HIGH);
+  digitalWrite (Green, HIGH);
   delayMicroseconds(micro);
-  digitalWrite(Green,LOW);
+  digitalWrite(Green, LOW);
 
   micro = analogRead(Potentiometer3);
   delayMicroseconds(micro);
-  digitalWrite (Blue,HIGH);
+  digitalWrite (Blue, HIGH);
   delayMicroseconds(micro);
-  digitalWrite(Blue,LOW);
+  digitalWrite(Blue, LOW);
+}
 
+void printstuff() {
+  Serial.println("Potentiometer readout:");
+  Serial.println(val1);
+  Serial.println(val2);
+  Serial.println(val3);
+  Serial.println("----------------");
 }
