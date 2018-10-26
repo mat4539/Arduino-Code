@@ -4,17 +4,17 @@ int Blue = 3;
 int micro = 0;
 
 //Potentiometer 1
-int Potentiometer1 = 0;
+int Potentiometer1 = 1;
 int val1 = 0;
 int pval1 = 0;
 
 //Potentiometer 2
-int Potentiometer2 = 1;
+int Potentiometer2 = 2;
 int val2 = 0;
 int pval2 = 0;
 
 //Potentiometer 3
-int Potentiometer3 = 2;
+int Potentiometer3 = 3;
 int val3 = 0;
 int pval3 = 0;
 
@@ -39,12 +39,12 @@ void setup() {
 }
 
 void loop() {
-  pval1 = analogRead(Potentiometer1);
-  pval2 = analogRead(Potentiometer2);
-  pval3 = analogRead(Potentiometer3);
+ pval1 = analogRead(Potentiometer1);
+ pval2 = analogRead(Potentiometer2);
+ pval3 = analogRead(Potentiometer3);
   
-  if (pval1 != val1 || pval2 != val2 || pval3 != val3) {
-    printstuff();
+   if (pval1 != val1 || pval2 != val2 || pval3 != val3) {
+   printstuff();
   }
 
   val1 = analogRead(Potentiometer1);
