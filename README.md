@@ -1,3 +1,3 @@
-# LED2.0
+#Arduino Code
 
-code stolen from mat
+Here are some samples of simple arduino code
